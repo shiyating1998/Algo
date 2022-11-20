@@ -3,6 +3,9 @@
 # sort the numbers in the bucket using any sorting algorithm 
 # join the results of each bucket 
 
+# Best case: when data can be evenly distributed
+# Worst case: when data are all put into one bucket
+
 from quicksort import quickSort
 
 def bucketSort(arr, bucketSize):
@@ -33,7 +36,9 @@ if __name__ == "__main__":
     print(bucketSort(array,10))
 
 
-
+#refer： https://www.runoob.com/w3cnote/bucket-sort.html
+# TODO: TIME ANALYSIS 
+# https://blog.csdn.net/zihonggege/article/details/104781491/ 
 
 
 # Java implementation 
