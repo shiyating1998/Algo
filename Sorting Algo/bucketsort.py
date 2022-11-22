@@ -6,6 +6,13 @@
 # Best case: when data can be evenly distributed
 # Worst case: when data are all put into one bucket
 
+# Time Complexity: O(n) (close to), when the input is pretty evenly distributed
+
+# 不过你可能会有一个疑问：每个桶内再用其他的排序算法进行排序（比如快排）,这样子时间复杂度不还是O(nlogn)吗？请看下面这段分析。  
+#如果要排序的数据有n个，我们把它们分在m个桶中，这样每个桶里的数据就是k = n / m。每个桶内排序的时间复杂度就为O(k*logk)。m个桶就是m * O(k * logk)=m * O((n / m)*log(n / m))=O(nlog(n / m))。当桶的个数m接近数据个数n时，log（n/m）就是一个较小的常数，所以时间复杂度接近O(n)。
+# https://blog.csdn.net/zihonggege/article/details/104781491/ 
+
+
 from quicksort import quickSort
 
 def bucketSort(arr, bucketSize):
@@ -37,8 +44,7 @@ if __name__ == "__main__":
 
 
 #refer： https://www.runoob.com/w3cnote/bucket-sort.html
-# TODO: TIME ANALYSIS 
-# https://blog.csdn.net/zihonggege/article/details/104781491/ 
+
 
 
 # Java implementation 
