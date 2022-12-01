@@ -38,7 +38,6 @@ class Solution:
 
         #for row in dp:
             #print(row)
-
         return dp[1][n]
 
 
