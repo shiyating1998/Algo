@@ -24,13 +24,7 @@ class Solution:
             else:
                 stack.append(int(c))
         
-        return stack.pop()
-
-                   
-
-
-
-                   
+        return stack.pop()                   
 
 print(13/5)
 print(13//5)
