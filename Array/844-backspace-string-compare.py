@@ -50,7 +50,7 @@ class Solution:
 
             if s[r1] != t[r2]:
 
-                else:
+                #else:
                     if c1 > 0:
                         r1 -= 1
                         c1 -= 1
