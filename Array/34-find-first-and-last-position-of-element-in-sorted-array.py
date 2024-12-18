@@ -27,8 +27,9 @@
 # nums is a non-decreasing array.
 # -109 <= target <= 109
 
+from typing import List
 
-class Solution:
+class Solution1:
     def binarySearch(self, low, high, target, nums):
         while (low <= high):
             mid = (low + high) // 2
@@ -75,3 +76,73 @@ class Solution:
 # Left Binary Search: Locate the leftmost (starting) index of the target.
 # Right Binary Search: Locate the rightmost (ending) index of the target.
 # If the target is not found during either search, return [-1, -1].
+
+
+# Analysis: First find the leftbound, then find the rightbound
+
+class Solution2:
+    def binarySearch(self, target, nums):
+        low = 0
+        high = len(nums) - 1
+        while (low <= high):
+            mid = (low + high) // 2
+            if (nums[mid]==target):
+                return mid 
+            elif (nums[mid] > target):
+                high = mid - 1 
+            else:
+                low = mid + 1 
+        return -1 
+
+    def find_left_bound(self, nums, target):
+        left = 0
+        right = len(nums) - 1
+        while left <= right:
+            mid = (left + right) // 2
+            if nums[mid] < target:
+                left = mid + 1
+            else:
+                right = mid - 1
+        return left
+    
+    def find_right_bound(self,nums,target):
+        left = 0
+        right = len(nums) - 1
+        while left <= right:
+            mid = (left + right) // 2
+            if nums[mid] > target:
+                right = mid - 1
+            else:
+                left = mid + 1
+        return right
+
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        left = self.binarySearch(target, nums)
+        if left == -1:
+            return [-1, -1]
+        left_bound = self.find_left_bound(nums, target)
+        right_bound = self.find_right_bound(nums, target)
+        return [left_bound, right_bound]
+# Input: nums = [5,7,7,8,8,10], target = 8
+# Output: [3,4]
+# Example 2:
+nums = [5,7,7,8,8,10]
+target = 8
+s = Solution2()
+assert s.searchRange(nums,target) == [3,4]
+
+# Input: nums = [5,7,7,8,8,10], target = 6
+# Output: [-1,-1]
+# Example 3:
+nums = [5,7,7,8,8,10]
+target = 6
+s = Solution2()
+assert s.searchRange(nums,target) == [-1,-1]    
+
+# Input: nums = [], target = 0
+# Output: [-1,-1]
+
+nums = []
+target = 0
+s = Solution2()
+assert s.searchRange(nums,target) == [-1,-1]
