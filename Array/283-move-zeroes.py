@@ -44,3 +44,26 @@ assert Solution().moveZeroes(nums = [0]) == [0]
 
 # Time Complexity: O(n)
 # Space Complexity: O(1)
+
+
+# 第二种解法的本质是一个循环不变量：在每一次循环前，j 的左边全部都是不等于0的
+
+# 起始j为0，明显满足
+# 此后每一次循环中，若nums[i] = 0，则j保持不变，满足；若nums[i] != 0，交换后j增一，仍然满足
+# 这就保证了最后结果的正确性。
+public void moveZeroes(int[] nums)  {
+    int length;
+    if (nums == null || (length = nums.length) == 0) {
+        return;
+    }
+    int j = 0;
+    for (int i = 0; i < length; i++) {
+        if (nums[i] != 0) {
+            if (i > j) {// #1
+                nums[j] = nums[i];
+                nums[i] = 0;
+            }
+            j++;
+        }
+    }
+}
