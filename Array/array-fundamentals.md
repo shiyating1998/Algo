@@ -7,4 +7,9 @@ Array is a data structure that holds a collection of items of the same type. Sto
 
 Techniques
 1. Binary search
+    - loop invariant
 2. Two pointers
+    - ending condition
+3. Sliding window
+    - conditions of shrinking window
+    - conditions of expanding window
